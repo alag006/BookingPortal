@@ -1,0 +1,197 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://primary-project-a.appspot.com/_ah/api",
+  "name" : "bookingdetailsendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://primary-project-a.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "techm.com",
+  "ownerName" : "techm.com",
+  "packagePath" : "bookingportal",
+  "methods" : {
+    "bookingdetailsendpoint.removeBookingDetails" : {
+      "path" : "bookingdetails/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.BookingDetailsEndpoint.removeBookingDetails",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "bookingdetailsendpoint.listBookingDetails" : {
+      "path" : "bookingdetails",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.BookingDetailsEndpoint.listBookingDetails",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "bookingdetailsendpoint.getBookingDetails" : {
+      "path" : "bookingdetails/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.BookingDetailsEndpoint.getBookingDetails",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "bookingdetailsendpoint.updateBookingDetails" : {
+      "path" : "bookingdetails",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.BookingDetailsEndpoint.updateBookingDetails",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "bookingdetailsendpoint.insertBookingDetails" : {
+      "path" : "bookingdetails",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.BookingDetailsEndpoint.insertBookingDetails",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_BookingDetails" : {
+        "id" : "CollectionResponse_BookingDetails",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "BookingDetails"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "BookingDetails" : {
+        "id" : "BookingDetails",
+        "type" : "object",
+        "properties" : {
+          "orderId" : {
+            "type" : "integer"
+          },
+          "orderName" : {
+            "type" : "string"
+          },
+          "paymentType" : {
+            "type" : "string"
+          },
+          "orderValue" : {
+            "type" : "integer"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.appengine.bookingportal.BookingDetailsEndpoint.removeBookingDetails" : {
+      },
+      "com.appengine.bookingportal.BookingDetailsEndpoint.listBookingDetails" : {
+        "response" : {
+          "$ref" : "CollectionResponse_BookingDetails"
+        }
+      },
+      "com.appengine.bookingportal.BookingDetailsEndpoint.getBookingDetails" : {
+        "response" : {
+          "$ref" : "BookingDetails"
+        }
+      },
+      "com.appengine.bookingportal.BookingDetailsEndpoint.updateBookingDetails" : {
+        "request" : {
+          "$ref" : "BookingDetails"
+        },
+        "response" : {
+          "$ref" : "BookingDetails"
+        }
+      },
+      "com.appengine.bookingportal.BookingDetailsEndpoint.insertBookingDetails" : {
+        "request" : {
+          "$ref" : "BookingDetails"
+        },
+        "response" : {
+          "$ref" : "BookingDetails"
+        }
+      }
+    }
+  }
+}

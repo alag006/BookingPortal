@@ -1,0 +1,221 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://primary-project-a.appspot.com/_ah/api",
+  "name" : "userdetailsendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://primary-project-a.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "techm.com",
+  "ownerName" : "techm.com",
+  "packagePath" : "bookingportal",
+  "methods" : {
+    "userdetailsendpoint.getUserDetails" : {
+      "path" : "userdetails/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.UserDetailsEndpoint.getUserDetails",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "userdetailsendpoint.insertUserDetails" : {
+      "path" : "userdetails",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.UserDetailsEndpoint.insertUserDetails",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "userdetailsendpoint.listUserDetails" : {
+      "path" : "userdetails",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.UserDetailsEndpoint.listUserDetails",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "userdetailsendpoint.updateUserDetails" : {
+      "path" : "userdetails",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.UserDetailsEndpoint.updateUserDetails",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "userdetailsendpoint.removeUserDetails" : {
+      "path" : "userdetails/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.UserDetailsEndpoint.removeUserDetails",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "UserDetails" : {
+        "id" : "UserDetails",
+        "type" : "object",
+        "properties" : {
+          "userId" : {
+            "type" : "string"
+          },
+          "mobileNo" : {
+            "type" : "integer"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "addressList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "AddressTemp"
+            }
+          }
+        }
+      },
+      "AddressTemp" : {
+        "id" : "AddressTemp",
+        "type" : "object",
+        "properties" : {
+          "line1" : {
+            "type" : "string"
+          },
+          "line2" : {
+            "type" : "string"
+          },
+          "pinCode" : {
+            "type" : "integer"
+          },
+          "state" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_UserDetails" : {
+        "id" : "CollectionResponse_UserDetails",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "UserDetails"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.appengine.bookingportal.UserDetailsEndpoint.getUserDetails" : {
+        "response" : {
+          "$ref" : "UserDetails"
+        }
+      },
+      "com.appengine.bookingportal.UserDetailsEndpoint.insertUserDetails" : {
+        "request" : {
+          "$ref" : "UserDetails"
+        },
+        "response" : {
+          "$ref" : "UserDetails"
+        }
+      },
+      "com.appengine.bookingportal.UserDetailsEndpoint.listUserDetails" : {
+        "response" : {
+          "$ref" : "CollectionResponse_UserDetails"
+        }
+      },
+      "com.appengine.bookingportal.UserDetailsEndpoint.updateUserDetails" : {
+        "request" : {
+          "$ref" : "UserDetails"
+        },
+        "response" : {
+          "$ref" : "UserDetails"
+        }
+      },
+      "com.appengine.bookingportal.UserDetailsEndpoint.removeUserDetails" : {
+      }
+    }
+  }
+}

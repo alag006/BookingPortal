@@ -1,0 +1,200 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://primary-project-a.appspot.com/_ah/api",
+  "name" : "addressendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://primary-project-a.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "techm.com",
+  "ownerName" : "techm.com",
+  "packagePath" : "bookingportal",
+  "methods" : {
+    "addressendpoint.insertAddress" : {
+      "path" : "address",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.AddressEndpoint.insertAddress",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "addressendpoint.updateAddress" : {
+      "path" : "address",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.AddressEndpoint.updateAddress",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "addressendpoint.removeAddress" : {
+      "path" : "address/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.AddressEndpoint.removeAddress",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "addressendpoint.getAddress" : {
+      "path" : "address/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.AddressEndpoint.getAddress",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "addressendpoint.listAddress" : {
+      "path" : "address",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.appengine.bookingportal.AddressEndpoint.listAddress",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Address" : {
+        "id" : "Address",
+        "type" : "object",
+        "properties" : {
+          "addressId" : {
+            "type" : "string"
+          },
+          "line1" : {
+            "type" : "string"
+          },
+          "line2" : {
+            "type" : "string"
+          },
+          "pinCode" : {
+            "type" : "integer"
+          },
+          "state" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CollectionResponse_Address" : {
+        "id" : "CollectionResponse_Address",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Address"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.appengine.bookingportal.AddressEndpoint.insertAddress" : {
+        "request" : {
+          "$ref" : "Address"
+        },
+        "response" : {
+          "$ref" : "Address"
+        }
+      },
+      "com.appengine.bookingportal.AddressEndpoint.updateAddress" : {
+        "request" : {
+          "$ref" : "Address"
+        },
+        "response" : {
+          "$ref" : "Address"
+        }
+      },
+      "com.appengine.bookingportal.AddressEndpoint.removeAddress" : {
+      },
+      "com.appengine.bookingportal.AddressEndpoint.getAddress" : {
+        "response" : {
+          "$ref" : "Address"
+        }
+      },
+      "com.appengine.bookingportal.AddressEndpoint.listAddress" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Address"
+        }
+      }
+    }
+  }
+}
