@@ -9,7 +9,7 @@ public class Address {
 	@Id
 	private String addressId;
 	
-	private String line1;
+	private String line111;
 	private String line2;
 	private Integer pinCode;
 	private String state;
